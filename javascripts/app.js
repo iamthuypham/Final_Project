@@ -8,7 +8,7 @@ function drag(task) {
 function complete(task){
   $(task).children('input').click(function(){
       if (this.checked) {
-          $(this).parent().appendTo($('#completed'))
+          $(this).parent().appendTo($('.completed'))
           $(this).attr('disabled',true)
       }
   })
@@ -22,12 +22,17 @@ function redo(task){
 function dropTask(){
   $('.box').droppable({
     tolerance:'intersect',
-    hoverClass: 'hovered',
+    hoverClass: "hovered",
     drop: function(event,ui){
       ui.draggable.detach().appendTo($(this).children('ul'));
       ui.draggable.children('input').attr('checked',false).attr('disabled',false);
     }
   });
+  $('.noDrop').droppable({
+    drop:function(){
+      alert('1) To complete a task, check the box \n2) To redo a task, double click it.')
+    }
+  })
 }
 //WHEN PAGE LOAD
 drag('.task');
@@ -41,6 +46,7 @@ $('#addNew').keypress(function(event){
   if (event.which ==13){
     newTask='<li class=\'task newTask\' style=\'position: relative;\'><input type=checkbox><span>'+$(this).val()+'</span></li>';
     $('.new').append(newTask);
+    $('#addNew').val('');
   }
   drag('.newTask');
   complete('.newTask');

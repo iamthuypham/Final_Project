@@ -2,12 +2,14 @@ body{
   background-color: #e1f1f6 ;
   font-family: Helvetica, sans-serif;
   color: #3a3a3a;
-  margin:0;
+  margin: 0;
+  padding: 0;
+  width:100%;
 }
 nav{
   background-color: #3a3a3a;
   height:60px;
-  width:100%;
+  padding: 0 auto;
   border-bottom:1px solid black;
 }
 #addNew, .ui-draggable-dragging {
@@ -15,31 +17,34 @@ nav{
   border: 1px solid grey;
   font-size: 14px;
   padding: 10px 14px;
-  margin: 10px 5%;
-  width: 42%;
+  margin: 10px 25%;
+  width:50%;
 }
-#page{
-  margin: 2.5% auto;
+#page, #completed{
   width: 90%;
+  margin: 5% 5% 0 5%;
+  display:inline-block;
 }
 .box{
+  padding: 15px;
+  margin-bottom: 2%;
+  float: left;
+  width: 45%;
+}
+.box:nth-child(2n+1){
+  clear:left;
+  margin-right:2%;
+}
+.box{
+  background-color: lightyellow;
   min-height: 300px;
   box-shadow: 1px 2px 1px #3a3a3a;
   border-radius: 5px;
-  padding: 20px 30px;
-  margin-bottom: 2%;
-  width:42%;
-  background-color: lightyellow;
 }
 .box.hovered{
   background: lightgrey;
 }
-.section1{
-  float:left;
-}
-.section2{
-  float:right;
-}
+
 h3{
   font-size: 18px;
   text-transform: uppercase;
@@ -48,8 +53,10 @@ h3{
 ul{
   padding-left: 0;
 }
-.box li{
+li{
   list-style-type:none;
+}
+.box li, #completed li{
   margin: 0 auto 2px;
   border-bottom: 1px dotted grey;
   padding: 2px 0;
@@ -60,9 +67,15 @@ ul{
 }
 .ui-draggable-dragging{
   box-shadow: 1px 2px 1px grey;
-  width: 40%;
   background-color: white;
+  width: 300px;
 }
-#completed{
-  display:none;
+#completed {
+  display:inline-block;
+  border-top: 1px solid grey;
+  margin-top:3%;
+  border-radius: 5px;
+}
+#completed h3, ul{
+  margin: 20px;
 }
